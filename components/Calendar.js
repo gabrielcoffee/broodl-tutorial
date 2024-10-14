@@ -1,3 +1,4 @@
+import { baseRating, gradients } from '@/utils';
 import React from 'react'
 const months = {'January': 'Jan', 'February': 'Feb',
   'March': 'Mar', 'April': 'Apr', 'May': 'May',
@@ -7,7 +8,14 @@ const months = {'January': 'Jan', 'February': 'Feb',
 const now = new Date();
 const dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-export default function Calendar() {
+const data = {
+  "15": 2, "16": 4, "17": 1, "18": 3, "19": 5,
+  "20": 2, "21": 4, "22": 1, "23": 3, "24": 5
+};
+
+
+export default function Calendar(props) {
+  const { demo } = props;
   const year = 2024; 
   const month = 'July';
 
@@ -20,7 +28,7 @@ export default function Calendar() {
   const numRows = (Math.ceil(daysToDisplay / 7))
 
   return (
-    <div className="flex flex-col overflow-hidden gap-1">
+    <div className="flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-10">
       {[...Array(numRows).keys()].map((row, rowIndex) => {
         return (
           <div key={rowIndex} className=" grid grid-cols-7 gap-1">
@@ -38,14 +46,18 @@ export default function Calendar() {
                 )
               }
 
+              let color = demo ?
+              gradients.indigo[baseRating[dayIndex]] : dayIndex in data ?
+               gradients.indigo[data[dayIndex]] : 'white';
+
               return (
-                <div className={"text-xs sm:text-sm border border-solid p-2 flex items-center gap-2 justify-between rounded-lg " 
+                <div style={{background: color}} className={"text-xs sm:text-sm border border-solid p-2 flex items-center gap-2 justify-between rounded-lg " 
                 +
                 (isToday ? ' border-indigo-400 ' : ' border-indigo-100 ')
                 +
                 (color === 'white' ? ' text-indigo-400 ' : 'text-white')
                 } key={weekDayIndex}>
-                  day
+                  {dayIndex}
                 </div>
               )
             })}
