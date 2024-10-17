@@ -1,4 +1,5 @@
 import Dashboard from "@/components/Dashboard";
+import Loading from "@/components/Loading";
 import Login from "@/components/Login";
 import Main from "@/components/Main";
 
@@ -7,18 +8,6 @@ title: "Broodl - Dashboard ",
 };
 
 export default function DashboardPage() {
-
-    const isAuthenticated = true;
-
-    let children = (
-        <Login/>
-    )
-
-    if (isAuthenticated) {
-        children = (
-            <Dashboard/>
-        )
-    }
 
     return (
         <Main>
