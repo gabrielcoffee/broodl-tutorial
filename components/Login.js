@@ -49,7 +49,7 @@ export default function Login() {
       {isRegister ? 'Register' : 'Log In'}
       </h3>
 
-      <p>You're one step away</p>
+      <p>You&#39;re one step away</p>
 
       <input value={email} type="email" onChange={(e) => {
         setEmail(e.target.value);
