@@ -12,3 +12,5 @@ Technologies used:
 This project is based on this tutorial: [NEXT.js 14 Full Course | Build and Deploy a Full Stack App w. Firebase & TailwindCSS](https://www.youtube.com/watch?v=lkjrUW8fI40). 
 
 If  you want to run this project locally, after you clone it, run "npm i" and then "ng serve".
+
+This project is hosted in [Broodl-Gabriel](https://broodl-gabriel.netlify.app/). You can Log in, Sign up, and start logging your daily moods.
