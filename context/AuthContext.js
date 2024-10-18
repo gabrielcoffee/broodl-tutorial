@@ -1,5 +1,5 @@
 'use client'
-import { auth } from '@/firebase';
+import { auth, db } from '@/firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import React, { useContext, useState, useEffect } from 'react';
@@ -52,11 +52,10 @@ export function AuthProvider({ children }) {
 
         if (docSnap.exists()) {
           console.log("Found user data")
-          firebaseData = docSnap.data;
-          console.log(firebaseData); // REMOVE LINE LATER REMOVE LINE LATER
+          firebaseData = docSnap.data();
         }
 
-        setuserDataObj(firebaseData);
+        setUserDataObj(firebaseData);
 
       } catch(error) {
         console.log(error.message);
